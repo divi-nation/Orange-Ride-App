@@ -1,22 +1,37 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'auth_01.dart'; // Import Auth01
+import '../app/home.dart'; // Import Home Screen
 
 class Auth05 extends StatefulWidget {
   @override
   _Auth05State createState() => _Auth05State();
 }
 
-class _Auth05State extends State<Auth05> {
+class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
   bool _passwordVisible = false;
   bool _confirmPasswordVisible = false;
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: Duration(milliseconds: 100),
+      vsync: this,
+    );
+    _animation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   void dispose() {
     _passwordController.dispose();
     _confirmPasswordController.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
@@ -32,11 +47,15 @@ class _Auth05State extends State<Auth05> {
     // Simulate a network request or OTP verification process
     Future.delayed(Duration(seconds: 5), () {
       Navigator.of(context).pop();
+      _animationController.forward(); // Start the animation
       showDialog(
         context: context,
         barrierDismissible: false,
         builder: (BuildContext context) {
-          return CongratulationDialog();
+          return ScaleTransition(
+            scale: _animation,
+            child: CongratulationDialog(),
+          );
         },
       );
     });
@@ -190,7 +209,6 @@ class CongratulationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.0),
@@ -205,28 +223,28 @@ class CongratulationDialog extends StatelessWidget {
               color: Colors.green,
               size: 60.0,
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height: 20.0),
             Text(
               'CONGRATULATIONS',
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8.0),
+            SizedBox(height: 12.0),
             Text(
               'Welcome to the Orange ride app, we are happy to have you.',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 14.0,
+                fontSize: 16.0,
               ),
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Auth01()),
+                  MaterialPageRoute(builder: (context) => HomePage()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -236,7 +254,7 @@ class CongratulationDialog extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12.0),
+                padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
                 child: Text(
                   'Jump In',
                   style: TextStyle(
