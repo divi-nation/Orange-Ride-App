@@ -119,7 +119,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      items: <String>['+1', '+91', '+44', '+81', '+61'].map((String value) {
+                      items: <String>['+233', '+1', '+91', '+44', '+81', '+61'].map((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(value),
@@ -133,6 +133,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                   SizedBox(width: 8.0),
+
                   Expanded(
                     flex: 7,
                     child: TextField(
