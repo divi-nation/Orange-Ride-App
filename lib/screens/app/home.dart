@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps/google_maps.dart' as gmaps;
 import 'dart:html' as html;
+import 'profile.dart';  // Import the profile page
 
 class HomePage extends StatefulWidget {
   @override
@@ -29,13 +31,36 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Widget _buildIconButton(IconData icon, VoidCallback onPressed) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color.fromARGB(100, 248, 120, 69),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: IconButton(
+        icon: Icon(icon, color: Colors.white),
+        onPressed: onPressed,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           // Google Map
-          HtmlElementView(viewType: 'map-container'), // Integrate Google Maps for Web
+          GoogleMap(
+            initialCameraPosition: CameraPosition(
+              target: LatLng(37.7749, -122.4194), // Sample coordinates
+              zoom: 14.0,
+            ),
+            onMapCreated: (GoogleMapController controller) {
+              _mapController = controller;
+            },
+            myLocationEnabled: true,
+            myLocationButtonEnabled: false,
+          ),
           // Top bar with icons
           Positioned(
             top: 40.0,
@@ -44,12 +69,23 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildIconButton(Icons.menu),
+                _buildIconButton(Icons.menu, () {
+                  // Handle menu button press
+                }),
                 Row(
                   children: [
-                    _buildIconButton(Icons.search),
+                   
                     SizedBox(width: 10.0),
-                    _buildIconButton(Icons.notifications),
+                    _buildIconButton(Icons.notifications, () {
+                      // Handle notifications button press
+                    }),
+                    SizedBox(width: 10.0),
+                    _buildIconButton(Icons.person, () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProfilePage()),
+                      );
+                    }),
                   ],
                 ),
               ],
@@ -124,19 +160,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildIconButton(IconData icon) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Color.fromARGB(100, 248, 120, 69),
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: IconButton(
-        icon: Icon(icon, color: Colors.white),
-        onPressed: () {},
       ),
     );
   }
