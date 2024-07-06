@@ -1,7 +1,7 @@
 // lib/screens/loading_screen.dart
 
 import 'package:flutter/material.dart';
-import 'setup_screens/su_screen1.dart';  // Import the SUScreen1
+import 'app/home.dart';  // Import the SUScreen1
 
 class LoadingScreen extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class LoadingScreen extends StatelessWidget {
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => SUScreen1()),  // Navigate to SUScreen1
+        MaterialPageRoute(builder: (context) => HomePage()),  // Navigate to SUScreen1
       );
     });
 

@@ -31,8 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_maps: ^6.0.0
-  google_maps_flutter: ^2.1.0
-  file_picker: ^4.3.8
+  google_maps_flutter: ^2.0.6 # or the latest version  file_picker: ^4.3.8
   lottie: ^1.2.2
 
 
