@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/app/notification.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'profile.dart';  // Import the profile page
 
@@ -53,13 +54,13 @@ class _HomePageState extends State<HomePage> {
     return AnimatedPositioned(
       duration: Duration(milliseconds: 300),
       curve: Curves.easeInOut,
-      left: _isSidePanelVisible ? 0 : -MediaQuery.of(context).size.width * 0.7,
+      left: _isSidePanelVisible ? 0 : -MediaQuery.of(context).size.width * 0.75,
       top: 0,
       bottom: 0,
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.7,
+        width: MediaQuery.of(context).size.width * 0.75,
         height: MediaQuery.of(context).size.height,
-        color: Colors.grey,
+        color: const Color.fromARGB(255, 222, 222, 222),
         child: Column(
           children: [
             _buildTopPanelDivision(2, Colors.white),
@@ -229,6 +230,10 @@ Widget _buildTopPanelDivision(int flex, Color color) {
                       SizedBox(width: 10.0),
                       _buildIconButton(Icons.notifications, () {
                         // Handle notifications button press
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NotificationPage()),
+                        );
                       }),
                       SizedBox(width: 10.0),
                       _buildIconButton(Icons.person, () {
