@@ -3,6 +3,8 @@ import 'dart:async';
 import 'auth_05.dart'; // Import Auth01
 
 class Auth04 extends StatefulWidget {
+  const Auth04({super.key});
+
   @override
   _Auth04State createState() => _Auth04State();
 }
@@ -20,8 +22,12 @@ class _Auth04State extends State<Auth04> {
 
   @override
   void dispose() {
-    _otpControllers.forEach((controller) => controller.dispose());
-    _focusNodes.forEach((focusNode) => focusNode.dispose());
+    for (var controller in _otpControllers) {
+      controller.dispose();
+    }
+    for (var focusNode in _focusNodes) {
+      focusNode.dispose();
+    }
     super.dispose();
   }
 
@@ -29,7 +35,7 @@ class _Auth04State extends State<Auth04> {
     return Container(
       width: 40.0,
       height: 40.0,
-      margin: EdgeInsets.symmetric(horizontal: 5.0),
+      margin: const EdgeInsets.symmetric(horizontal: 5.0),
       child: TextField(
         controller: _otpControllers[index],
         focusNode: _focusNodes[index],
@@ -37,13 +43,13 @@ class _Auth04State extends State<Auth04> {
         textAlign: TextAlign.center,
         maxLength: 1,
         decoration: InputDecoration(
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.orange),
           ),
-          enabledBorder: OutlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey),
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.orange),
           ),
           filled: _otpControllers[index].text.isNotEmpty,
@@ -67,27 +73,27 @@ class _Auth04State extends State<Auth04> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return LoadingDialog();
+        return const LoadingDialog();
       },
     );
 
     // Simulate a network request or OTP verification process
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 5), () {
       Navigator.of(context).pop();
       showDialog(
         context: context,
         barrierDismissible: false,
         builder: (BuildContext context) {
-          return SuccessDialog();
+          return const SuccessDialog();
         },
       );
 
       // Close the success dialog after 2 seconds and navigate to auth_01.dart
-      Future.delayed(Duration(seconds: 2), () {
+      Future.delayed(const Duration(seconds: 2), () {
         Navigator.of(context).pop(); // Close the success dialog
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Auth05())
+          MaterialPageRoute(builder: (context) => const Auth05())
         );
       });
     });
@@ -110,12 +116,12 @@ class _Auth04State extends State<Auth04> {
                 Row(
                   children: [
                     IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
+                      icon: const Icon(Icons.arrow_back_ios),
                       onPressed: () {
                         Navigator.pop(context);
                       },
                     ),
-                    Text(
+                    const Text(
                       'Back',
                       style: TextStyle(
                         fontSize: 14.0,
@@ -123,9 +129,9 @@ class _Auth04State extends State<Auth04> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 // "Phone Verification" title
-                Text(
+                const Text(
                   'Phone Verification',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -133,9 +139,9 @@ class _Auth04State extends State<Auth04> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 // "Enter your OTP" subtitle
-                Text(
+                const Text(
                   'Enter your OTP',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -143,18 +149,18 @@ class _Auth04State extends State<Auth04> {
                     color: Colors.grey,
                   ),
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 // OTP input boxes
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(5, (index) => _buildOtpBox(index)),
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 // "Didn't receive code? Resend Code" text
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Didn't receive code? ",
                       style: TextStyle(
                         fontSize: 14.0,
@@ -164,7 +170,7 @@ class _Auth04State extends State<Auth04> {
                       onTap: () {
                         // Handle Resend Code tap
                       },
-                      child: Text(
+                      child: const Text(
                         'Resend Code',
                         style: TextStyle(
                           fontSize: 14.0,
@@ -175,7 +181,7 @@ class _Auth04State extends State<Auth04> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
               ],
             ),
           ),
@@ -185,17 +191,17 @@ class _Auth04State extends State<Auth04> {
         padding: const EdgeInsets.only(bottom: 20.0),
         child: Container(
           width: buttonWidth,
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: ElevatedButton(
             onPressed: _showLoadingDialog,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromARGB(255, 248, 120, 69),
+              backgroundColor: const Color.fromARGB(255, 248, 120, 69),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(vertical: 12.0),
               child: Text(
                 'Verify',
                 style: TextStyle(
@@ -212,9 +218,11 @@ class _Auth04State extends State<Auth04> {
 }
 
 class LoadingDialog extends StatelessWidget {
+  const LoadingDialog({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Dialog(
+    return const Dialog(
       backgroundColor: Colors.transparent,
       child: Center(
         child: CircularProgressIndicator(),
@@ -224,9 +232,11 @@ class LoadingDialog extends StatelessWidget {
 }
 
 class SuccessDialog extends StatelessWidget {
+  const SuccessDialog({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Dialog(
+    return const Dialog(
       backgroundColor: Colors.transparent,
       child: Center(
         child: Icon(

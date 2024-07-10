@@ -39,13 +39,15 @@ class NotificationPage extends StatelessWidget {
     },
   ];
 
+  NotificationPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notification'),
+        title: const Text('Notification'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -53,21 +55,21 @@ class NotificationPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text("Today", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           ),
-          ...notifications.where((notification) => notification['date'] == 'Today').map((notification) => buildNotificationItem(notification)).toList(),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          ...notifications.where((notification) => notification['date'] == 'Today').map((notification) => buildNotificationItem(notification)),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text("Yesterday", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           ),
-          ...notifications.where((notification) => notification['date'] == 'Yesterday').map((notification) => buildNotificationItem(notification)).toList(),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          ...notifications.where((notification) => notification['date'] == 'Yesterday').map((notification) => buildNotificationItem(notification)),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text("May, 27 2023", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           ),
-          ...notifications.where((notification) => notification['date'] == 'May, 27 2023').map((notification) => buildNotificationItem(notification)).toList(),
+          ...notifications.where((notification) => notification['date'] == 'May, 27 2023').map((notification) => buildNotificationItem(notification)),
         ],
       ),
     );
@@ -75,8 +77,8 @@ class NotificationPage extends StatelessWidget {
 
   Widget buildNotificationItem(Map<String, String> notification) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-      padding: EdgeInsets.all(16.0),
+      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8.0),
@@ -85,29 +87,29 @@ class NotificationPage extends StatelessWidget {
             color: Colors.grey.withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Row(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             backgroundColor: Colors.orange,
             child: Icon(Icons.notifications, color: Colors.white),
           ),
-          SizedBox(width: 16.0),
+          const SizedBox(width: 16.0),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   notification['title']!,
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 4.0),
+                const SizedBox(height: 4.0),
                 Text(
                   notification['description']!,
-                  style: TextStyle(fontSize: 14.0, color: Colors.grey),
+                  style: const TextStyle(fontSize: 14.0, color: Colors.grey),
                 ),
               ],
             ),

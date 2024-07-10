@@ -1,15 +1,17 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+# platform :ios, '12.0'
 
-target 'Runner' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+# target 'Runner' do
+#   use_frameworks!
 
-  # Pods for Runner
+#   # Flutter SDK dependencies
+#   flutter_root = '/Users/macbookpro2015/Documents/flutter'  # Adjust path as per your Flutter installation
+#   pod 'Flutter', :path => "#{flutter_root}/packages/flutter"
 
-  target 'RunnerTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+#   # Generated dependency from Flutter plugins
+#   pod 'GeneratedPluginRegistrant', :path => "#{flutter_root}/packages/flutter_tools"
 
-end
+#   # Add your pods here
+#   # pod 'Firebase/Core'  # Example pod
+
+# end
+

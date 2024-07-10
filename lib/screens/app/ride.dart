@@ -4,7 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class RidePage extends StatefulWidget {
   final String destination;
 
-  RidePage({required this.destination});
+  const RidePage({super.key, required this.destination});
 
   @override
   _RidePageState createState() => _RidePageState();
@@ -209,7 +209,7 @@ class _RidePageState extends State<RidePage> {
         children: [
           // Google Map
           GoogleMap(
-            initialCameraPosition: CameraPosition(
+            initialCameraPosition: const CameraPosition(
               target: LatLng(37.7749, -122.4194), // Sample coordinates
               zoom: 14.0,
             ),
@@ -237,7 +237,7 @@ class _RidePageState extends State<RidePage> {
                       color: Colors.black.withOpacity(0.2),
                       spreadRadius: 1,
                       blurRadius: 5,
-                      offset: Offset(0, 2),
+                      offset: const Offset(0, 2),
                     ),
                   ],
                 ),
@@ -245,26 +245,26 @@ class _RidePageState extends State<RidePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.arrow_back, color: Colors.black),
+                      icon: const Icon(Icons.arrow_back, color: Colors.black),
                       onPressed: _goBack,
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 3.0),
-                        padding: EdgeInsets.symmetric(horizontal: 12.0),
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
                         decoration: BoxDecoration(
                           color: Colors.grey.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(5.0),
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.search, color: Colors.black),
-                            SizedBox(width: 8.0),
+                            const Icon(Icons.search, color: Colors.black),
+                            const SizedBox(width: 8.0),
                             Expanded(
                               child: Center(
                                 child: Text(
                                   widget.destination,
-                                  style: TextStyle(color: Colors.black54),
+                                  style: const TextStyle(color: Colors.black54),
                                   textAlign: TextAlign.center,
                                 ),
                               ),
@@ -274,7 +274,7 @@ class _RidePageState extends State<RidePage> {
                       ),
                     ),
                     IconButton(
-                      icon: Icon(Icons.refresh, color: Colors.black),
+                      icon: const Icon(Icons.refresh, color: Colors.black),
                       onPressed: _reloadPage,
                     ),
                   ],
@@ -291,7 +291,7 @@ class _RidePageState extends State<RidePage> {
               height: MediaQuery.of(context).size.height * 0.30,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20.0),
                   topRight: Radius.circular(20.0),
                 ),
@@ -300,7 +300,7 @@ class _RidePageState extends State<RidePage> {
                     color: Colors.black.withOpacity(0.2),
                     spreadRadius: 1,
                     blurRadius: 5,
-                    offset: Offset(0, 2),
+                    offset: const Offset(0, 2),
                   ),
                 ],
               ),
@@ -309,9 +309,9 @@ class _RidePageState extends State<RidePage> {
                   // 10% promo banner
                   Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     color: Colors.orange.withOpacity(0.7),
-                    child: Text(
+                    child: const Text(
                       "✓ 10% promo applied",
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -320,7 +320,7 @@ class _RidePageState extends State<RidePage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 8.0),
+                  const SizedBox(height: 8.0),
                   // Ride information
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -339,9 +339,9 @@ class _RidePageState extends State<RidePage> {
                           ),
                         ),
                         // Ride details
-                        Expanded(
+                        const Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding: EdgeInsets.symmetric(horizontal: 8.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -368,9 +368,9 @@ class _RidePageState extends State<RidePage> {
                           ),
                         ),
                         // Fare
-                        Container(
+                        SizedBox(
                           width: MediaQuery.of(context).size.width * 0.2,
-                          child: Column(
+                          child: const Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
@@ -400,8 +400,8 @@ class _RidePageState extends State<RidePage> {
                     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                     child: Row(
                       children: [
-                        Icon(Icons.money, color: Colors.orange),
-                        SizedBox(width: 8.0),
+                        const Icon(Icons.money, color: Colors.orange),
+                        const SizedBox(width: 8.0),
                         DropdownButton<String>(
                           value: 'Cash',
                           items: <String>['Cash', 'Card'].map((String value) {
@@ -426,13 +426,13 @@ class _RidePageState extends State<RidePage> {
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,
-                        minimumSize: Size(double.infinity, 50.0),
+                        minimumSize: const Size(double.infinity, 50.0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
-                          side: BorderSide(color: Colors.orange, width: 2.0),
+                          side: const BorderSide(color: Colors.orange, width: 2.0),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Select Ride',
                         style: TextStyle(color: Colors.white, fontSize: 16.0),
                       ),
@@ -449,5 +449,5 @@ class _RidePageState extends State<RidePage> {
 }
 
 void main() {
-  runApp(MaterialApp(home: RidePage(destination: "Kumasi")));
+  runApp(const MaterialApp(home: RidePage(destination: "Kumasi")));
 }

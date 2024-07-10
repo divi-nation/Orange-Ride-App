@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/app/trips.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'ride.dart';
+import 'trips.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -12,8 +16,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   bool _isSidePanelVisible = false;
   String _searchText = "";
   double _initialHeight = 0.3;
-  double _minHeight = 0.3;
-  double _maxHeight = 1.0;
+  final double _minHeight = 0.3;
+  final double _maxHeight = 1.0;
   late AnimationController _animationController;
   late Animation<Offset> _slideAnimation;
 
@@ -201,12 +205,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: Duration(milliseconds: 300),  // Set duration to 0.6 seconds
+      duration: const Duration(milliseconds: 300),  // Set duration to 0.6 seconds
       vsync: this,
     );
     _slideAnimation = Tween<Offset>(
-      begin: Offset(-1.0, 0.0),
-      end: Offset(0.0, 0.0),
+      begin: const Offset(-1.0, 0.0),
+      end: const Offset(0.0, 0.0),
     ).animate(CurvedAnimation(
       parent: _animationController,
       curve: Curves.easeInOut,
@@ -246,7 +250,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             color: Colors.black.withOpacity(0.2),
             spreadRadius: 1,
             blurRadius: 5,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -259,12 +263,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   Widget _buildSearchBar() {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: TextField(
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.search, color: Colors.black),
+          prefixIcon: const Icon(Icons.search, color: Colors.black),
           hintText: "Where to?",
-          hintStyle: TextStyle(color: Colors.black54),
+          hintStyle: const TextStyle(color: Colors.black54),
           filled: true,
           fillColor: Colors.grey.withOpacity(0.2),
           border: OutlineInputBorder(
@@ -287,7 +291,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     return Column(
       children: suggestions.map((suggestion) {
         return ListTile(
-          leading: Icon(Icons.access_time, color: Colors.orange),
+          leading: const Icon(Icons.access_time, color: Colors.orange),
           title: Text(suggestion),
           onTap: () {
             setState(() {
@@ -302,12 +306,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   Widget _buildDestinationInput() {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: TextField(
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.location_on, color: Colors.black),
+          prefixIcon: const Icon(Icons.location_on, color: Colors.black),
           hintText: "Current Location",
-          hintStyle: TextStyle(color: Colors.black54),
+          hintStyle: const TextStyle(color: Colors.black54),
           filled: true,
           fillColor: Colors.grey.withOpacity(0.2),
           border: OutlineInputBorder(
@@ -326,7 +330,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         children: [
           // Google Map
           GoogleMap(
-            initialCameraPosition: CameraPosition(
+            initialCameraPosition: const CameraPosition(
               target: LatLng(37.7749, -122.4194), // Sample coordinates
               zoom: 14.0,
             ),
@@ -364,7 +368,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildIconButton(Icons.menu, _toggleSidePanel),
-                  Row(
+                  const Row(
                     // children: [
                     //   SizedBox(width: 10.0),
                     //   _buildIconButton(Icons.notifications, () {
@@ -389,7 +393,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 return Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0),
                     ),
@@ -398,7 +402,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                         color: Colors.black.withOpacity(0.2),
                         spreadRadius: 1,
                         blurRadius: 5,
-                        offset: Offset(0, 2),
+                        offset: const Offset(0, 2),
                       ),
                     ],
                   ),
@@ -417,7 +421,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                           }
                         },
                         child: Container(
-                          margin: EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.all(8.0),
                           height: 5.0,
                           width: 50.0,
                           decoration: BoxDecoration(
@@ -434,7 +438,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                             if (_initialHeight == _minHeight) _buildSuggestionList(),
                             if (_initialHeight == _maxHeight) ...[
                               _buildDestinationInput(),
-                              SizedBox(height: 20.0),
+                              const SizedBox(height: 20.0),
                               Center(
                                 child: ElevatedButton.icon(
                                   onPressed: () {
@@ -445,17 +449,17 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                                       ),
                                     );
                                   },
-                                  label: Text(
+                                  label: const Text(
                                     "Select ride",
                                     style: TextStyle(color: Colors.white),
                                   ),
-                                  icon: Icon(Icons.directions_car),
+                                  icon: const Icon(Icons.directions_car),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.orange,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
-                                    padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+                                    padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
                                   ),
                                 ),
                               ),
@@ -483,9 +487,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         child: Column(
           children: [
             _buildTopPanelDivision(2, Colors.white),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             _buildMiddlePanelDivision(4, Colors.white),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             _buildBottomPanelDivision(4, Colors.white),
           ],
         ),
@@ -497,10 +501,10 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     return Expanded(
       flex: flex,
       child: Container(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(10.0),
             bottomRight: Radius.circular(10.0),
           ),
@@ -512,8 +516,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               backgroundColor: Colors.grey[300],
               child: Icon(Icons.person, size: 30.0, color: Colors.grey[800]),
             ),
-            SizedBox(width: 10.0),
-            Column(
+            const SizedBox(width: 10.0),
+            const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -544,23 +548,39 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              leading: const Icon(Icons.notification_important),
+              title: const Text("Notifications"),
               onTap: () {
-                // Handle settings tap
+
               },
             ),
             ListTile(
-              leading: Icon(Icons.history),
-              title: Text('History'),
-              onTap: () {
-                // Handle history tap
+              leading: const Icon(Icons.money),
+              title: const Text('Discounts'),
+              onTap: (){
+
               },
             ),
+
             ListTile(
-              leading: Icon(Icons.help),
-              title: Text('Help'),
+              leading: const Icon(Icons.history),
+              title: const Text('History'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TripsPage()),
+                );
+              },
+            ),
+            const ListTile(
+              leading: Icon(Icons.support),
+              title: Text('Support'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.help),
+              title: const Text('Help'),
               onTap: () {
                 // Handle help tap
               },
@@ -577,7 +597,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       child: Container(
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(10.0),
             topRight: Radius.circular(10.0),
           ),
@@ -587,13 +607,13 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           children: [
             Divider(color: Colors.grey[300], thickness: 1.0),
             ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Logout'),
+              leading: const Icon(Icons.logout),
+              title: const Text('Logout'),
               onTap: () {
                 // Handle logout tap
               },
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
           ],
         ),
       ),
@@ -602,5 +622,5 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 }
 
 void main() {
-  runApp(MaterialApp(home: HomePage()));
+  runApp(const MaterialApp(home: HomePage()));
 }

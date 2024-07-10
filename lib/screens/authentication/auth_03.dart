@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'auth_04.dart';
 
 class Auth03 extends StatefulWidget {
+  const Auth03({super.key});
+
   @override
   _Auth03State createState() => _Auth03State();
 }
@@ -31,13 +33,13 @@ class _Auth03State extends State<Auth03> {
                 child: Row(
                   children: [
                     IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
+                      icon: const Icon(Icons.arrow_back_ios),
                       onPressed: () {
                         Navigator.pop(
                             context); // Navigate back to previous screen
                       },
                     ),
-                    Text(
+                    const Text(
                       'Back',
                       style: TextStyle(
                         fontSize: 14.0,
@@ -46,8 +48,8 @@ class _Auth03State extends State<Auth03> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
                   'Log In',
                   style: TextStyle(
@@ -56,7 +58,7 @@ class _Auth03State extends State<Auth03> {
                   ),
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               // Input fields: Email or Phone Number, Password
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -64,19 +66,19 @@ class _Auth03State extends State<Auth03> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Email or Phone Number',
                         hintText: 'Enter your email or phone number',
                         border: OutlineInputBorder(), // Rectangular border
                       ),
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     TextFormField(
                       obscureText: !_isPasswordVisible,
                       decoration: InputDecoration(
                         labelText: 'Password',
                         hintText: 'Enter your password',
-                        border: OutlineInputBorder(), // Rectangular border
+                        border: const OutlineInputBorder(), // Rectangular border
                         suffixIcon: IconButton(
                           icon: Icon(
                             _isPasswordVisible
@@ -91,14 +93,14 @@ class _Auth03State extends State<Auth03> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     Align(
                       alignment: Alignment.centerRight,
                       child: GestureDetector(
                         onTap: () {
                           // Handle Forgot Password tap
                         },
-                        child: Text(
+                        child: const Text(
                           'Forgot password?',
                           style: TextStyle(
                             color: Colors.orange,
@@ -107,26 +109,26 @@ class _Auth03State extends State<Auth03> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                         height:
                             60.0), // Increased space above the Log In button
                     // Log In Button
-                    Container(
+                    SizedBox(
                       width: buttonWidth,
                       child: ElevatedButton(
                         onPressed: () {
                           // Handle Log In button tap
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(
+                          backgroundColor: const Color.fromARGB(
                               255, 248, 120, 69), // Button background color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 8.0), // Adjust border radius
                           ),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 12.0),
                           child: Text(
                             'Log In',
                             style: TextStyle(
@@ -137,9 +139,9 @@ class _Auth03State extends State<Auth03> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     // Horizontal line with "or"
-                    Row(
+                    const Row(
                       children: [
                         Expanded(
                           child: Divider(
@@ -147,7 +149,7 @@ class _Auth03State extends State<Auth03> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text('or'),
                         ),
                         Expanded(
@@ -157,12 +159,12 @@ class _Auth03State extends State<Auth03> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     // Social media sign-up buttons
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
+                        SizedBox(
                           width: socialButtonSize,
                           height: socialButtonSize,
                           child: ElevatedButton(
@@ -173,14 +175,14 @@ class _Auth03State extends State<Auth03> {
                               backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
-                                side: BorderSide(color: Colors.grey),
+                                side: const BorderSide(color: Colors.grey),
                               ),
                             ),
                             child: Image.asset(
                                 'assets/images/google_logo.png'), // Change this to your Google logo asset path
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: socialButtonSize,
                           height: socialButtonSize,
                           child: ElevatedButton(
@@ -191,14 +193,14 @@ class _Auth03State extends State<Auth03> {
                               backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
-                                side: BorderSide(color: Colors.grey),
+                                side: const BorderSide(color: Colors.grey),
                               ),
                             ),
                             child: Image.asset(
                                 'assets/images/facebook_logo.png'), // Change this to your Facebook logo asset path
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: socialButtonSize,
                           height: socialButtonSize,
                           child: ElevatedButton(
@@ -209,7 +211,7 @@ class _Auth03State extends State<Auth03> {
                               backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
-                                side: BorderSide(color: Colors.grey),
+                                side: const BorderSide(color: Colors.grey),
                               ),
                             ),
                             child: Image.asset(
@@ -218,12 +220,12 @@ class _Auth03State extends State<Auth03> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     // Don't have an account? Sign Up
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Don\'t have an account? ',
                           style: TextStyle(fontSize: 14.0),
                         ),
@@ -231,7 +233,7 @@ class _Auth03State extends State<Auth03> {
                           onTap: () {
                             // Handle Sign Up tap
                           },
-                          child: Text(
+                          child: const Text(
                             'Sign Up',
                             style: TextStyle(
                               fontSize: 14.0,
@@ -242,7 +244,7 @@ class _Auth03State extends State<Auth03> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                   ],
                 ),
               ),

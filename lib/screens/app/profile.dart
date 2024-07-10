@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -22,7 +24,7 @@ class _ProfilePageState extends State<ProfilePage> {
           content: Text(message),
           actions: <Widget>[
             TextButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -44,8 +46,8 @@ class _ProfilePageState extends State<ProfilePage> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+          child: const Padding(
+            padding: EdgeInsets.only(left: 8.0),
             child: Row(
               children: [
                 Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -61,7 +63,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
         ),
-        title: Text(
+        title: const Text(
           'Profile',
           style: TextStyle(
             color: Colors.black,
@@ -78,7 +80,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: <Widget>[
               Stack(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 50,
                     backgroundImage: AssetImage('assets/profile_picture.png'), // Replace with your profile picture asset
                   ),
@@ -86,7 +88,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     bottom: 0,
                     right: 0,
                     child: IconButton(
-                      icon: Icon(Icons.camera_alt),
+                      icon: const Icon(Icons.camera_alt),
                       onPressed: () {
                         // Handle profile picture selection
                       },
@@ -94,7 +96,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ],
               ),
-              SizedBox(height: 32.0),
+              const SizedBox(height: 32.0),
               TextField(
                 controller: _nameController,
                 decoration: InputDecoration(
@@ -105,7 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Row(
                 children: [
                   Expanded(
@@ -132,7 +134,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       },
                     ),
                   ),
-                  SizedBox(width: 8.0),
+                  const SizedBox(width: 8.0),
 
                   Expanded(
                     flex: 7,
@@ -149,7 +151,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ],
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
@@ -160,7 +162,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextField(
                 controller: _streetController,
                 decoration: InputDecoration(
@@ -171,7 +173,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextField(
                 controller: _cityController,
                 decoration: InputDecoration(
@@ -182,7 +184,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextField(
                 controller: _districtController,
                 decoration: InputDecoration(
@@ -193,7 +195,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
-              SizedBox(height: 32.0),
+              const SizedBox(height: 32.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -201,32 +203,32 @@ class _ProfilePageState extends State<ProfilePage> {
                     onPressed: () {
                       _showPopup('Are you sure you want to cancel? Changes will not be saved.');
                     },
-                    child: Text('Cancel'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
-                      side: BorderSide(color: Colors.orange),
+                      side: const BorderSide(color: Colors.orange),
                       foregroundColor: Colors.orange,
-                      padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
                       minimumSize: Size(MediaQuery.of(context).size.width * 0.4, 48.0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
+                    child: const Text('Cancel'),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       _showPopup('Changes saved.');
                     },
-                    child: Text('Save'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
                       foregroundColor: Colors.white,
-                      padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
                       minimumSize: Size(MediaQuery.of(context).size.width * 0.4, 48.0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
+                    child: const Text('Save'),
                   ),
                 ],
               ),

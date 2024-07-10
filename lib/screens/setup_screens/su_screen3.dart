@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../authentication/auth_01.dart'; // Import the screen you want to navigate to
 
 class SUScreen3 extends StatelessWidget {
+  const SUScreen3({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +15,7 @@ class SUScreen3 extends StatelessWidget {
           children: [
             // First line: Skip button on the right side
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 3.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -21,10 +23,10 @@ class SUScreen3 extends StatelessWidget {
                     onPressed: () {
                       // Implement skip functionality here
                     },
-                    child: Text(
+                    child: const Text(
                       'Skip',
                       style: TextStyle(
-                        color: const Color.fromARGB(255, 70, 70, 70),
+                        color: Color.fromARGB(255, 70, 70, 70),
                         fontSize: 16.0,
                       ),
                     ),
@@ -33,15 +35,15 @@ class SUScreen3 extends StatelessWidget {
               ),
             ),
             // Spacer for second line
-            SizedBox(height: 1.0), // Adjust height as needed
+            const SizedBox(height: 1.0), // Adjust height as needed
             // Image spanning lines 3-5
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.5, // Adjust width as needed
               child: Image.asset('assets/images/logo.png'), // Change this to your image asset path
             ),
             // Spacer for the remaining lines
             // Line 6: Bold text
-            Text(
+            const Text(
               'Anywhere you are',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -62,7 +64,7 @@ class SUScreen3 extends StatelessWidget {
               ),
             ),
             // Button at the bottom
-            Spacer(flex: 1),
+            const Spacer(flex: 1),
             Align(
               alignment: Alignment.center,
               child: GestureDetector(
@@ -70,18 +72,18 @@ class SUScreen3 extends StatelessWidget {
                   // Navigate to auth_01.dart when button is tapped
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Auth01()),
+                    MaterialPageRoute(builder: (context) => const Auth01()),
                   );
                 },
                 child: Container(
-                  margin: EdgeInsets.only(bottom: 130.0),
+                  margin: const EdgeInsets.only(bottom: 130.0),
                   width: 60.0,
                   height: 60.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 248, 120, 69),
                     shape: BoxShape.circle,
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Icon(
                       Icons.arrow_forward,
                       color: Colors.white,

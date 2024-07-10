@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'auth_04.dart';
 
 class Auth02 extends StatelessWidget {
+  const Auth02({super.key});
+
   @override
   Widget build(BuildContext context) {
     double buttonWidth = MediaQuery.of(context).size.width * 0.9; // 90% of screen width
@@ -23,12 +25,12 @@ class Auth02 extends StatelessWidget {
                 child: Row(
                   children: [
                     IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
+                      icon: const Icon(Icons.arrow_back_ios),
                       onPressed: () {
                         Navigator.pop(context); // Navigate back to previous screen
                       },
                     ),
-                    Text(
+                    const Text(
                       'Back',
                       style: TextStyle(
                         fontSize: 14.0,
@@ -37,8 +39,8 @@ class Auth02 extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
                   'Sign Up',
                   style: TextStyle(
@@ -47,7 +49,7 @@ class Auth02 extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               // Input fields: Name, Email, Phone (with country code), Gender
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -55,33 +57,33 @@ class Auth02 extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Name',
                         hintText: 'Enter your name',
                         border: OutlineInputBorder(), // Rectangular border
                       ),
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Email',
                         hintText: 'Enter your email',
                         border: OutlineInputBorder(), // Rectangular border
                       ),
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     Row(
                       children: [
                         // Country Code Dropdown
                         Expanded(
                           flex: 1,
                           child: DropdownButtonFormField<String>(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Code',
                               hintText: 'Select',
                               border: OutlineInputBorder(), // Rectangular border
                             ),
-                            items: [
+                            items: const [
                               DropdownMenuItem(
                                 value: '+1',
                                 child: Text('+1'),
@@ -98,12 +100,12 @@ class Auth02 extends StatelessWidget {
                             onChanged: (value) {},
                           ),
                         ),
-                        SizedBox(width: 16.0),
+                        const SizedBox(width: 16.0),
                         // Actual Phone Number Text Field
                         Expanded(
                           flex: 3,
                           child: TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Phone Number',
                               hintText: 'Enter your phone number',
                               border: OutlineInputBorder(), // Rectangular border
@@ -112,15 +114,15 @@ class Auth02 extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     // Gender Dropdown
                     DropdownButtonFormField<String>(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Gender',
                         hintText: 'Select',
                         border: OutlineInputBorder(), // Rectangular border
                       ),
-                      items: [
+                      items: const [
                         DropdownMenuItem(
                           value: 'male',
                           child: Text('Male'),
@@ -132,19 +134,19 @@ class Auth02 extends StatelessWidget {
                       ],
                       onChanged: (value) {},
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     // Privacy Policy Text
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.check,
                           color: Colors.green,
                           size: 16.0,
                         ),
-                        SizedBox(width: 4.0),
+                        const SizedBox(width: 4.0),
                         Expanded(
                           child: RichText(
-                            text: TextSpan(
+                            text: const TextSpan(
                               text: 'By signing up, you agree to the ',
                               style: TextStyle(color: Colors.black),
                               children: [
@@ -172,26 +174,26 @@ class Auth02 extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     // Sign Up Button
-                    Container(
+                    SizedBox(
                       width: buttonWidth,
                       child: ElevatedButton(
                         onPressed: () {
                           // Handle Sign Up button tap
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Auth04()),
+                            MaterialPageRoute(builder: (context) => const Auth04()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 248, 120, 69), // Button background color
+                          backgroundColor: const Color.fromARGB(255, 248, 120, 69), // Button background color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0), // Adjust border radius
                           ),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 12.0),
                           child: Text(
                             'Sign Up',
                             style: TextStyle(
@@ -202,9 +204,9 @@ class Auth02 extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     // Horizontal line with "or"
-                    Row(
+                    const Row(
                       children: [
                         Expanded(
                           child: Divider(
@@ -212,7 +214,7 @@ class Auth02 extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text('or'),
                         ),
                         Expanded(
@@ -222,12 +224,12 @@ class Auth02 extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     // Social media sign-up buttons
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
+                        SizedBox(
                           width: socialButtonSize,
                           height: socialButtonSize,
                           child: ElevatedButton(
@@ -238,13 +240,13 @@ class Auth02 extends StatelessWidget {
                               backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
-                                side: BorderSide(color: Colors.grey),
+                                side: const BorderSide(color: Colors.grey),
                               ),
                             ),
                             child: Image.asset('assets/images/google_logo.png'), // Change this to your Google logo asset path
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: socialButtonSize,
                           height: socialButtonSize,
                           child: ElevatedButton(
@@ -255,13 +257,13 @@ class Auth02 extends StatelessWidget {
                               backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
-                                side: BorderSide(color: Colors.grey),
+                                side: const BorderSide(color: Colors.grey),
                               ),
                             ),
                             child: Image.asset('assets/images/facebook_logo.png'), // Change this to your Facebook logo asset path
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: socialButtonSize,
                           height: socialButtonSize,
                           child: ElevatedButton(
@@ -272,7 +274,7 @@ class Auth02 extends StatelessWidget {
                               backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
-                                side: BorderSide(color: Colors.grey),
+                                side: const BorderSide(color: Colors.grey),
                               ),
                             ),
                             child: Image.asset('assets/images/apple_logo.png'), // Change this to your Apple logo asset path
@@ -280,12 +282,12 @@ class Auth02 extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                      // Already have an account? Sign In
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Already have an account? ',
                           style: TextStyle(fontSize: 14.0),
                         ),
@@ -293,7 +295,7 @@ class Auth02 extends StatelessWidget {
                           onTap: () {
                             // Handle Sign In tap
                           },
-                          child: Text(
+                          child: const Text(
                             'Sign In',
                             style: TextStyle(
                               fontSize: 14.0,
@@ -304,7 +306,7 @@ class Auth02 extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                   ],
                 ),
               ),

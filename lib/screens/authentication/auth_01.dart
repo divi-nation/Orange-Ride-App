@@ -5,6 +5,8 @@ import 'auth_02.dart'; // Import the screen you want to navigate to
 import 'auth_03.dart'; // Import the screen you want to navigate to
 
 class Auth01 extends StatelessWidget {
+  const Auth01({super.key});
+
   @override
   Widget build(BuildContext context) {
     double buttonWidth = MediaQuery.of(context).size.width * 0.9; // 90% of screen width
@@ -18,7 +20,7 @@ class Auth01 extends StatelessWidget {
           children: [
             // First line: Skip button on the right side
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 3.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -26,10 +28,10 @@ class Auth01 extends StatelessWidget {
                     onPressed: () {
                       // Implement skip functionality here
                     },
-                    child: Text(
+                    child: const Text(
                       'Skip',
                       style: TextStyle(
-                        color: const Color.fromARGB(255, 70, 70, 70),
+                        color: Color.fromARGB(255, 70, 70, 70),
                         fontSize: 16.0,
                       ),
                     ),
@@ -38,15 +40,15 @@ class Auth01 extends StatelessWidget {
               ),
             ),
             // Spacer for second line
-            SizedBox(height: 10.0), // Adjust height as needed
+            const SizedBox(height: 10.0), // Adjust height as needed
             // Image spanning lines 3-5
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.5, // Adjust width as needed
               child: Image.asset('assets/images/logo.png'), // Change this to your image asset path
             ),
             // Spacer for the remaining lines
             // Line 6: Bold text
-            Text(
+            const Text(
               'Welcome',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -67,9 +69,9 @@ class Auth01 extends StatelessWidget {
               ),
             ),
             // Buttons
-            SizedBox(height: 90.0),
+            const SizedBox(height: 90.0),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
+              padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
 
               width: buttonWidth,
               child: ElevatedButton(
@@ -77,17 +79,17 @@ class Auth01 extends StatelessWidget {
                   // Navigate to Auth02 screen when button is tapped
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Auth02()),
+                    MaterialPageRoute(builder: (context) => const Auth02()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 248, 120, 69), // Button background color
+                  backgroundColor: const Color.fromARGB(255, 248, 120, 69), // Button background color
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0), // Adjust border radius
                   ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 12.0),
                   child: Text(
                     'Create an Account',
                     style: TextStyle(
@@ -98,37 +100,37 @@ class Auth01 extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 12.0), // Adjust vertical spacing between buttons
+            const SizedBox(height: 12.0), // Adjust vertical spacing between buttons
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
+              padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
               width: buttonWidth,
               child: OutlinedButton(
                 onPressed: () {
                   // Handle Log In button tap
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Auth03()),
+                    MaterialPageRoute(builder: (context) => const Auth03()),
                   );
                 },
                 style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: Color.fromARGB(255, 248, 118, 42)), // Border color
+                  side: const BorderSide(color: Color.fromARGB(255, 248, 118, 42)), // Border color
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0), // Adjust border radius
                   ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 12.0),
                   child: Text(
                     'Log In',
                     style: TextStyle(
-                      color: const Color.fromARGB(255, 243, 131, 33),
+                      color: Color.fromARGB(255, 243, 131, 33),
                       fontSize: 16.0,
                     ),
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 10.0), // Adjust vertical spacing below buttons
+            const SizedBox(height: 10.0), // Adjust vertical spacing below buttons
           ],
         ),
       ),

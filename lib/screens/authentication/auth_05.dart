@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import '../app/home.dart'; // Import Home Screen
 
 class Auth05 extends StatefulWidget {
+  const Auth05({super.key});
+
   @override
   _Auth05State createState() => _Auth05State();
 }
 
 class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
   bool _passwordVisible = false;
   bool _confirmPasswordVisible = false;
   late AnimationController _animationController;
@@ -18,7 +20,7 @@ class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: Duration(milliseconds: 100),
+      duration: const Duration(milliseconds: 100),
       vsync: this,
     );
     _animation = CurvedAnimation(
@@ -40,12 +42,12 @@ class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return LoadingDialog();
+        return const LoadingDialog();
       },
     );
 
     // Simulate a network request or OTP verification process
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 5), () {
       Navigator.of(context).pop();
       _animationController.forward(); // Start the animation
       showDialog(
@@ -54,7 +56,7 @@ class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
         builder: (BuildContext context) {
           return ScaleTransition(
             scale: _animation,
-            child: CongratulationDialog(),
+            child: const CongratulationDialog(),
           );
         },
       );
@@ -78,12 +80,12 @@ class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
                 Row(
                   children: [
                     IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
+                      icon: const Icon(Icons.arrow_back_ios),
                       onPressed: () {
                         Navigator.pop(context);
                       },
                     ),
-                    Text(
+                    const Text(
                       'Back',
                       style: TextStyle(
                         fontSize: 14.0,
@@ -91,9 +93,9 @@ class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
                     ),
                   ],
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 // "Set Password" title
-                Text(
+                const Text(
                   'Set Password',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -101,9 +103,9 @@ class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 // "Set your password" subtitle
-                Text(
+                const Text(
                   'Set your password',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -111,14 +113,14 @@ class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
                     color: Colors.grey,
                   ),
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 // Password input boxes
                 TextFormField(
                   controller: _passwordController,
                   obscureText: !_passwordVisible,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _passwordVisible ? Icons.visibility : Icons.visibility_off,
@@ -131,13 +133,13 @@ class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
                     ),
                   ),
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 TextFormField(
                   controller: _confirmPasswordController,
                   obscureText: !_confirmPasswordVisible,
                   decoration: InputDecoration(
                     labelText: 'Confirm Password',
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _confirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
@@ -150,9 +152,9 @@ class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
                     ),
                   ),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 // "At least 6 characters" text
-                Text(
+                const Text(
                   'At least 6 characters',
                   textAlign: TextAlign.left,
                   style: TextStyle(
@@ -160,20 +162,20 @@ class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
                     color: Colors.grey,
                   ),
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 // Register Button
-                Container(
+                SizedBox(
                   width: buttonWidth,
                   child: ElevatedButton(
                     onPressed: _showLoadingDialog,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 248, 120, 69),
+                      backgroundColor: const Color.fromARGB(255, 248, 120, 69),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12.0),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 12.0),
                       child: Text(
                         'Register',
                         style: TextStyle(
@@ -194,9 +196,11 @@ class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
 }
 
 class LoadingDialog extends StatelessWidget {
+  const LoadingDialog({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Dialog(
+    return const Dialog(
       backgroundColor: Colors.transparent,
       child: Center(
         child: CircularProgressIndicator(),
@@ -206,6 +210,8 @@ class LoadingDialog extends StatelessWidget {
 }
 
 class CongratulationDialog extends StatelessWidget {
+  const CongratulationDialog({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -218,43 +224,43 @@ class CongratulationDialog extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            const Icon(
               Icons.check_circle,
               color: Colors.green,
               size: 60.0,
             ),
-            SizedBox(height: 20.0),
-            Text(
+            const SizedBox(height: 20.0),
+            const Text(
               'CONGRATULATIONS',
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 12.0),
-            Text(
+            const SizedBox(height: 12.0),
+            const Text(
               'Welcome to the Orange ride app, we are happy to have you.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 16.0,
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 248, 120, 69),
+                backgroundColor: const Color.fromARGB(255, 248, 120, 69),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
                 child: Text(
                   'Jump In',
                   style: TextStyle(
