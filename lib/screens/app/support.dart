@@ -89,7 +89,7 @@ class SupportPage extends StatelessWidget {
               subtitle: Text('View open chats'),
               trailing: Icon(Icons.arrow_forward_ios),
             ),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 26.0),
             const Text(
               'Get help with a recent ride',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
@@ -125,7 +125,7 @@ class SupportPage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 26.0),
             const Text(
               'Get help with something else',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/app/about.dart';
+import 'package:flutter_application_1/screens/app/support.dart';
 import 'package:flutter_application_1/screens/app/trips.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'ride.dart';
 import 'trips.dart';
 import 'notification.dart';
 import 'profile.dart';
-import 'driver/new_driver.dart';
+import '../driver/new_driver.dart';
+import 'support.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -591,15 +594,28 @@ class _HomePageState extends State<HomePage>
                 );
               },
             ),
-            const ListTile(
+            ListTile(
               leading: Icon(Icons.support),
               title: Text('Support'),
+              onTap: () {
+                // Handle help tap
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SupportPage()),
+                );
+                
+              },
             ),
             ListTile(
               leading: const Icon(Icons.help),
-              title: const Text('Help'),
+              title: const Text('About'),
               onTap: () {
                 // Handle help tap
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AboutPage()),
+                );
+                
               },
             ),
           ],
