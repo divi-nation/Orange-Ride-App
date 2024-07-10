@@ -6,16 +6,40 @@ class TripsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white, // Set Scaffold background color to white
 
-      appBar: AppBar(
-        backgroundColor: Colors.white, // Set Scaffold background color to white
-        title: Text('My trips'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+     appBar: AppBar(
+  backgroundColor: Colors.white,
+  title: const Text(
+    'My trips',
+    style: TextStyle(
+      color: Colors.black, // Set the title color to black
+      fontWeight: FontWeight.bold,
+      fontSize: 18.0,
+    ),
+  ),
+  leading: GestureDetector(
+    onTap: () {
+      Navigator.pop(context);
+    },
+    child: const Padding(
+      padding: EdgeInsets.only(left: 8.0),
+      child: Row(
+        children: [
+          Icon(Icons.arrow_back_ios, color: Colors.black),
+          SizedBox(width: 4.0),
+          Text(
+            'Back',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 16.0,
+            ),
+          ),
+        ],
       ),
+    ),
+  ),
+  centerTitle: true,
+),
+
       body: ListView(
         children: [
           TripSection(

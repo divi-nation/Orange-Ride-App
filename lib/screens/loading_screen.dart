@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/setup_screens/su_screen1.dart';
-import 'setup_screens/su_screen1.dart';  // Import the SUScreen1
+import 'app/home.dart';  // Import the SUScreen1
 
 class LoadingScreen extends StatelessWidget {
   const LoadingScreen({super.key});
@@ -13,7 +13,7 @@ class LoadingScreen extends StatelessWidget {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const SUScreen1()),  // Navigate to SUScreen1
+        MaterialPageRoute(builder: (context) => const HomePage()),  // Navigate to SUScreen1
       );
     });
 

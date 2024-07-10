@@ -3,6 +3,9 @@ import 'package:flutter_application_1/screens/app/trips.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'ride.dart';
 import 'trips.dart';
+import 'notification.dart';
+import 'profile.dart';
+import 'driver/new_driver.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,7 +14,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   GoogleMapController? _mapController;
   bool _isSidePanelVisible = false;
   String _searchText = "";
@@ -200,12 +204,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     ]
   ''';
 
-
   @override
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 300),  // Set duration to 0.6 seconds
+      duration:
+          const Duration(milliseconds: 300), // Set duration to 0.6 seconds
       vsync: this,
     );
     _slideAnimation = Tween<Offset>(
@@ -336,16 +340,13 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             ),
             onMapCreated: (GoogleMapController controller) {
               _mapController = controller;
-              _mapController!.setMapStyle(mapStyle); // Apply custom map style here
+              _mapController!
+                  .setMapStyle(mapStyle); // Apply custom map style here
             },
             myLocationEnabled: true,
             myLocationButtonEnabled: false,
           ),
 
-
-    
-
-    
           // Gesture detector to close the side panel when clicking outside
           if (_isSidePanelVisible)
             Positioned.fill(
@@ -369,17 +370,17 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 children: [
                   _buildIconButton(Icons.menu, _toggleSidePanel),
                   const Row(
-                    // children: [
-                    //   SizedBox(width: 10.0),
-                    //   _buildIconButton(Icons.notifications, () {
-                    //     // Handle notifications button press
-                    //   }),
-                    //   SizedBox(width: 10.0),
-                    //   _buildIconButton(Icons.person, () {
-                    //     // Handle profile button press
-                    //   }),
-                    // ],
-                  ),
+                      // children: [
+                      //   SizedBox(width: 10.0),
+                      //   _buildIconButton(Icons.notifications, () {
+                      //     // Handle notifications button press
+                      //   }),
+                      //   SizedBox(width: 10.0),
+                      //   _buildIconButton(Icons.person, () {
+                      //     // Handle profile button press
+                      //   }),
+                      // ],
+                      ),
                 ],
               ),
             ),
@@ -410,11 +411,13 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                     children: [
                       GestureDetector(
                         onVerticalDragUpdate: (details) {
-                          if (details.primaryDelta! < 0 && _initialHeight == _minHeight) {
+                          if (details.primaryDelta! < 0 &&
+                              _initialHeight == _minHeight) {
                             setState(() {
                               _initialHeight = _maxHeight;
                             });
-                          } else if (details.primaryDelta! > 0 && _initialHeight == _maxHeight) {
+                          } else if (details.primaryDelta! > 0 &&
+                              _initialHeight == _maxHeight) {
                             setState(() {
                               _initialHeight = _minHeight;
                             });
@@ -435,7 +438,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                         child: ListView(
                           controller: scrollController,
                           children: [
-                            if (_initialHeight == _minHeight) _buildSuggestionList(),
+                            if (_initialHeight == _minHeight)
+                              _buildSuggestionList(),
                             if (_initialHeight == _maxHeight) ...[
                               _buildDestinationInput(),
                               const SizedBox(height: 20.0),
@@ -445,7 +449,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => RidePage(destination: _searchText),
+                                        builder: (context) =>
+                                            RidePage(destination: _searchText),
                                       ),
                                     );
                                   },
@@ -453,13 +458,15 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                                     "Select ride",
                                     style: TextStyle(color: Colors.white),
                                   ),
-                                  icon: const Icon(Icons.directions_car),
+                                  icon: const Icon(Icons.directions_car,
+                                      color: Colors.white),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.orange,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
-                                    padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 50.0, vertical: 20.0),
                                   ),
                                 ),
                               ),
@@ -509,29 +516,40 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             bottomRight: Radius.circular(10.0),
           ),
         ),
-        child: Row(
-          children: [
-            CircleAvatar(
-              radius: 25.0,
-              backgroundColor: Colors.grey[300],
-              child: Icon(Icons.person, size: 30.0, color: Colors.grey[800]),
-            ),
-            const SizedBox(width: 10.0),
-            const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Divine',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'View profile',
-                  style: TextStyle(fontSize: 14.0, color: Colors.orange),
-                ),
-              ],
-            ),
-          ],
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProfilePage(),
+              ),
+            );
+          },
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 25.0,
+                backgroundColor: Colors.grey[300],
+                child: Icon(Icons.person, size: 30.0, color: Colors.grey[800]),
+              ),
+              const SizedBox(width: 10.0),
+              const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Divine',
+                    style:
+                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    'View profile',
+                    style: TextStyle(fontSize: 14.0, color: Colors.orange),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -548,22 +566,21 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-
             ListTile(
               leading: const Icon(Icons.notification_important),
               title: const Text("Notifications"),
               onTap: () {
-
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotificationPage()),
+                );
               },
             ),
             ListTile(
               leading: const Icon(Icons.money),
               title: const Text('Discounts'),
-              onTap: (){
-
-              },
+              onTap: () {},
             ),
-
             ListTile(
               leading: const Icon(Icons.history),
               title: const Text('History'),
@@ -607,10 +624,14 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           children: [
             Divider(color: Colors.grey[300], thickness: 1.0),
             ListTile(
-              leading: const Icon(Icons.logout),
-              title: const Text('Logout'),
+              leading: const Icon(Icons.drive_eta),
+              title: const Text('Become A Driver'),
               onTap: () {
-                // Handle logout tap
+                // Navigate to NewDriverPage when "Become A Driver" is tapped
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NewDriverPage()),
+                );
               },
             ),
             const SizedBox(height: 20.0),

@@ -40,39 +40,39 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: const Padding(
-            padding: EdgeInsets.only(left: 8.0),
-            child: Row(
-              children: [
-                Icon(Icons.arrow_back_ios, color: Colors.black),
-                SizedBox(width: 4.0),
-                Text(
-                  'Back',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14.0,
-                  ),
-                ),
-              ],
+  backgroundColor: Colors.white,
+  title: const Text(
+    'Notification',
+    style: TextStyle(
+      color: Colors.black, // Set the title color to black
+      fontWeight: FontWeight.bold,
+      fontSize: 18.0,
+    ),
+  ),
+  leading: GestureDetector(
+    onTap: () {
+      Navigator.pop(context);
+    },
+    child: const Padding(
+      padding: EdgeInsets.only(left: 8.0),
+      child: Row(
+        children: [
+          Icon(Icons.arrow_back_ios, color: Colors.black),
+          SizedBox(width: 4.0),
+          Text(
+            'Back',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 16.0,
             ),
           ),
-        ),
-        title: const Text(
-          'Profile',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 14.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
+        ],
       ),
+    ),
+  ),
+  centerTitle: true,
+),
+
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: SingleChildScrollView(
@@ -81,7 +81,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Stack(
                 children: [
                   const CircleAvatar(
-                    radius: 50,
+                    radius: 75, // Increased radius for larger image
                     backgroundImage: AssetImage('assets/profile_picture.png'), // Replace with your profile picture asset
                   ),
                   Positioned(
@@ -96,18 +96,18 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 32.0),
+              const SizedBox(height: 40.0), // Increased space below profile image
               TextField(
                 controller: _nameController,
                 decoration: InputDecoration(
                   labelText: 'Name',
                   labelStyle: TextStyle(color: Colors.grey[600]),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
+                  border: UnderlineInputBorder( // Only bottom border
+                    borderSide: BorderSide(color: Colors.grey[600]!),
                   ),
                 ),
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0), // Increased space between inputs
               Row(
                 children: [
                   Expanded(
@@ -117,8 +117,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       decoration: InputDecoration(
                         labelText: 'Code',
                         labelStyle: TextStyle(color: Colors.grey[600]),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                        border: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey[600]!),
                         ),
                       ),
                       items: <String>['+233', '+1', '+91', '+44', '+81', '+61'].map((String value) {
@@ -135,7 +135,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                   const SizedBox(width: 8.0),
-
                   Expanded(
                     flex: 7,
                     child: TextField(
@@ -143,59 +142,59 @@ class _ProfilePageState extends State<ProfilePage> {
                       decoration: InputDecoration(
                         labelText: 'Phone',
                         labelStyle: TextStyle(color: Colors.grey[600]),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                        border: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey[600]!),
                         ),
                       ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
                   labelText: 'Email',
                   labelStyle: TextStyle(color: Colors.grey[600]),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey[600]!),
                   ),
                 ),
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
               TextField(
                 controller: _streetController,
                 decoration: InputDecoration(
                   labelText: 'Street',
                   labelStyle: TextStyle(color: Colors.grey[600]),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey[600]!),
                   ),
                 ),
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
               TextField(
                 controller: _cityController,
                 decoration: InputDecoration(
                   labelText: 'City',
                   labelStyle: TextStyle(color: Colors.grey[600]),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey[600]!),
                   ),
                 ),
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
               TextField(
                 controller: _districtController,
                 decoration: InputDecoration(
                   labelText: 'District',
                   labelStyle: TextStyle(color: Colors.grey[600]),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey[600]!),
                   ),
                 ),
               ),
-              const SizedBox(height: 32.0),
+              const SizedBox(height: 40.0), // Increased space before buttons
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[

@@ -45,14 +45,39 @@ class NotificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notification'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+  backgroundColor: Colors.white,
+  title: const Text(
+    'Notifications',
+    style: TextStyle(
+      color: Colors.black, // Set the title color to black
+      fontWeight: FontWeight.bold,
+      fontSize: 18.0,
+    ),
+  ),
+  leading: GestureDetector(
+    onTap: () {
+      Navigator.pop(context);
+    },
+    child: const Padding(
+      padding: EdgeInsets.only(left: 8.0),
+      child: Row(
+        children: [
+          Icon(Icons.arrow_back_ios, color: Colors.black),
+          SizedBox(width: 4.0),
+          Text(
+            'Back',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 16.0,
+            ),
+          ),
+        ],
       ),
+    ),
+  ),
+  centerTitle: true,
+),
+
       body: ListView(
         children: [
           const Padding(
@@ -94,7 +119,7 @@ class NotificationPage extends StatelessWidget {
       child: Row(
         children: [
           const CircleAvatar(
-            backgroundColor: Colors.orange,
+            backgroundColor: Colors.grey,
             child: Icon(Icons.notifications, color: Colors.white),
           ),
           const SizedBox(width: 16.0),
