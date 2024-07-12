@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'auth_04.dart';
+import 'auth_03.dart';
 
 class Auth02 extends StatelessWidget {
   const Auth02({super.key});
@@ -9,11 +10,10 @@ class Auth02 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double buttonWidth = MediaQuery.of(context).size.width * 0.9; // 90% of screen width
-    double socialButtonSize = MediaQuery.of(context).size.width * 0.15; // 20% of screen width for social buttons
+    double socialButtonSize = MediaQuery.of(context).size.width * 0.20; // 15% of screen width for social buttons
 
     return Scaffold(
       backgroundColor: Colors.white, // Set Scaffold background color to white
-
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -56,59 +56,212 @@ class Auth02 extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Name',
-                        hintText: 'Enter your name',
-                        border: OutlineInputBorder(), // Rectangular border
+                    // Full Name Input
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromARGB(107, 156, 105, 43).withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 48.0,
+                            height: 48.0,
+                            margin: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(107, 156, 105, 43).withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: const Icon(
+                              Icons.person_outline,
+                              color: Colors.orange,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 48.0,
+                              child: TextFormField(
+                                decoration: const InputDecoration(
+                                  labelText: 'Full Name',
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+                                ),
+                                style: const TextStyle(fontSize: 16.0),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(height: 16.0),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Email',
-                        hintText: 'Enter your email',
-                        border: OutlineInputBorder(), // Rectangular border
+                    // Email Input
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromARGB(107, 156, 105, 43).withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 48.0,
+                            height: 48.0,
+                            margin: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(107, 156, 105, 43).withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: const Icon(
+                              Icons.email_outlined,
+                              color: Colors.orange,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 48.0,
+                              child: TextFormField(
+                                decoration: const InputDecoration(
+                                  labelText: 'Email',
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+                                ),
+                                style: const TextStyle(fontSize: 16.0),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(height: 16.0),
+                    // Phone Input with Code
                     Row(
                       children: [
                         // Country Code Dropdown
                         Expanded(
                           flex: 1,
-                          child: DropdownButtonFormField<String>(
-                            decoration: const InputDecoration(
-                              labelText: 'Code',
-                              hintText: 'Select',
-                              border: OutlineInputBorder(), // Rectangular border
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(107, 156, 105, 43).withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
                             ),
-                            items: const [
-                              DropdownMenuItem(
-                                value: '+1',
-                                child: Text('+1'),
+                            child: DropdownButtonFormField<String>(
+                              decoration: const InputDecoration(
+                                labelText: 'Code',
+                                hintText: 'Select',
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
                               ),
-                              DropdownMenuItem(
-                                value: '+91',
-                                child: Text('+91'),
-                              ),
-                              DropdownMenuItem(
-                                value: '+44',
-                                child: Text('+44'),
-                              ),
-                            ],
-                            onChanged: (value) {},
+                              items: const [
+                                DropdownMenuItem(
+                                  value: '+1',
+                                  child: Text('+1'),
+                                ),
+                                DropdownMenuItem(
+                                  value: '+91',
+                                  child: Text('+91'),
+                                ),
+                                DropdownMenuItem(
+                                  value: '+44',
+                                  child: Text('+44'),
+                                ),
+                              ],
+                              onChanged: (value) {},
+                            ),
                           ),
                         ),
                         const SizedBox(width: 16.0),
                         // Actual Phone Number Text Field
                         Expanded(
                           flex: 3,
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              labelText: 'Phone Number',
-                              hintText: 'Enter your phone number',
-                              border: OutlineInputBorder(), // Rectangular border
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(107, 156, 105, 43).withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 48.0,
+                                  height: 48.0,
+                                  margin: const EdgeInsets.all(8.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color.fromARGB(107, 156, 105, 43).withOpacity(0.5),
+                                        spreadRadius: 2,
+                                        blurRadius: 5,
+                                        offset: const Offset(0, 3),
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Icon(
+                                    Icons.phone_outlined,
+                                    color: Colors.orange,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    height: 48.0,
+                                    child: TextFormField(
+                                      decoration: const InputDecoration(
+                                        labelText: 'Phone Number',
+                                        border: InputBorder.none,
+                                        contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+                                      ),
+                                      style: const TextStyle(fontSize: 16.0),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -116,23 +269,68 @@ class Auth02 extends StatelessWidget {
                     ),
                     const SizedBox(height: 16.0),
                     // Gender Dropdown
-                    DropdownButtonFormField<String>(
-                      decoration: const InputDecoration(
-                        labelText: 'Gender',
-                        hintText: 'Select',
-                        border: OutlineInputBorder(), // Rectangular border
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromARGB(107, 156, 105, 43).withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
                       ),
-                      items: const [
-                        DropdownMenuItem(
-                          value: 'male',
-                          child: Text('Male'),
-                        ),
-                        DropdownMenuItem(
-                          value: 'female',
-                          child: Text('Female'),
-                        ),
-                      ],
-                      onChanged: (value) {},
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 48.0,
+                            height: 48.0,
+                            margin: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(107, 156, 105, 43).withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: const Icon(
+                              Icons.person_outline,
+                              color: Colors.orange,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 48.0,
+                              child: DropdownButtonFormField<String>(
+                                decoration: const InputDecoration(
+                                  labelText: 'Gender',
+                                  hintText: 'Select',
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+                                ),
+                                items: const [
+                                  DropdownMenuItem(
+                                    value: 'male',
+                                    child: Text('Male'),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: 'female',
+                                    child: Text('Female'),
+                                  ),
+                                ],
+                                onChanged: (value) {},
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(height: 16.0),
                     // Privacy Policy Text
@@ -176,8 +374,18 @@ class Auth02 extends StatelessWidget {
                     ),
                     const SizedBox(height: 20.0),
                     // Sign Up Button
-                    SizedBox(
-                      width: buttonWidth,
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.5, // 50% of screen width
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(158, 255, 153, 0).withOpacity(0.1), // Tr                            spreadRadius: 5,
+                            blurRadius: 20,
+                            offset: Offset(0, 10), // Moves the shadow 10 pixels down
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(16.0), // Adjust border radius
+                      ),
                       child: ElevatedButton(
                         onPressed: () {
                           // Handle Sign Up button tap
@@ -187,9 +395,9 @@ class Auth02 extends StatelessWidget {
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 248, 120, 69), // Button background color
+                          backgroundColor: Color.fromARGB(255, 255, 139, 93), // Button background color
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0), // Adjust border radius
+                            borderRadius: BorderRadius.circular(16.0), // Adjust border radius
                           ),
                         ),
                         child: const Padding(
@@ -204,6 +412,7 @@ class Auth02 extends StatelessWidget {
                         ),
                       ),
                     ),
+
                     const SizedBox(height: 20.0),
                     // Horizontal line with "or"
                     const Row(
@@ -226,64 +435,106 @@ class Auth02 extends StatelessWidget {
                     ),
                     const SizedBox(height: 20.0),
                     // Social media sign-up buttons
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        SizedBox(
-                          width: socialButtonSize,
-                          height: socialButtonSize,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Handle Google sign-up
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                side: const BorderSide(color: Colors.grey),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                            child: SizedBox(
+                              width: socialButtonSize,
+                              height: socialButtonSize * 0.7,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.orange.withOpacity(0.3), // Translucent orange shadow
+                                      spreadRadius: 2,
+                                      blurRadius: 5,
+                                      offset: Offset(0, 3), // Moves the shadow 3 pixels down
+                                    ),
+                                  ],
+                                ),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    // Handle Google sign-up
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                  child: Image.asset('assets/images/google.png'), // Change this to your Google logo asset path
+                                ),
                               ),
                             ),
-                            child: Image.asset('assets/images/google_logo.png'), // Change this to your Google logo asset path
                           ),
-                        ),
-                        SizedBox(
-                          width: socialButtonSize,
-                          height: socialButtonSize,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Handle Facebook sign-up
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                side: const BorderSide(color: Colors.grey),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                            child: SizedBox(
+                              width: socialButtonSize,
+                              height: socialButtonSize * 0.7,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.orange.withOpacity(0.3), // Translucent orange shadow
+                                      spreadRadius: 2,
+                                      blurRadius: 5,
+                                      offset: Offset(0, 3), // Moves the shadow 3 pixels down
+                                    ),
+                                  ],
+                                ),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    // Handle Facebook sign-up
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                  child: Image.asset('assets/images/facebook.png'), // Change this to your Facebook logo asset path
+                                ),
                               ),
                             ),
-                            child: Image.asset('assets/images/facebook_logo.png'), // Change this to your Facebook logo asset path
                           ),
-                        ),
-                        SizedBox(
-                          width: socialButtonSize,
-                          height: socialButtonSize,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Handle Apple sign-up
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                side: const BorderSide(color: Colors.grey),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                            child: SizedBox(
+                              width: socialButtonSize,
+                              height: socialButtonSize * 0.7,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.orange.withOpacity(0.3), // Translucent orange shadow
+                                      spreadRadius: 2,
+                                      blurRadius: 5,
+                                      offset: Offset(0, 3), // Moves the shadow 3 pixels down
+                                    ),
+                                  ],
+                                ),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    // Handle Apple sign-up
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                  child: Image.asset('assets/images/apple.png'), // Change this to your Apple logo asset path
+                                ),
                               ),
                             ),
-                            child: Image.asset('assets/images/apple_logo.png'), // Change this to your Apple logo asset path
                           ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
                     const SizedBox(height: 20.0),
-                     // Already have an account? Sign In
+                    // Already have an account? Sign In
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -294,6 +545,8 @@ class Auth02 extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             // Handle Sign In tap
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Auth03()),
+                            );
                           },
                           child: const Text(
                             'Sign In',

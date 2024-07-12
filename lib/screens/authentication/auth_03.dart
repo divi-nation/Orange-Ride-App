@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'auth_04.dart';
-
+import 'package:flutter_application_1/screens/authentication/auth_02.dart';
+import 'auth_02.dart';
 class Auth03 extends StatefulWidget {
   const Auth03({super.key});
 
@@ -13,8 +13,10 @@ class _Auth03State extends State<Auth03> {
 
   @override
   Widget build(BuildContext context) {
-    double buttonWidth = MediaQuery.of(context).size.width * 0.9; // 90% of screen width
-    double socialButtonSize = MediaQuery.of(context).size.width * 0.15; // 15% of screen width for social buttons
+    double buttonWidth =
+        MediaQuery.of(context).size.width * 0.9; // 90% of screen width
+    double socialButtonSize = MediaQuery.of(context).size.width *
+        0.20; // 15% of screen width for social buttons
 
     return Scaffold(
       backgroundColor: Colors.white, // Set Scaffold background color to white
@@ -27,10 +29,7 @@ class _Auth03State extends State<Auth03> {
               Padding(
                 padding: const EdgeInsets.all(32.0),
                 child: Center(
-                  child: Image.asset(
-                    'assets/images/logo.png', // Replace with your logo asset path
-                    height: 100,
-                  ),
+                  child:  SizedBox(height: 100,)
                 ),
               ),
               const SizedBox(height: 20.0),
@@ -63,124 +62,131 @@ class _Auth03State extends State<Auth03> {
                   children: [
                     // Email or Phone Number input
                     Container(
-  decoration: BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.circular(16.0), // Increased border radius
-    boxShadow: [
-      BoxShadow(
-        color: Colors.grey.withOpacity(0.5),
-        spreadRadius: 2,
-        blurRadius: 5,
-        offset: const Offset(0, 3),
-      ),
-    ],
-  ),
-  child: Row(
-    children: [
-      Container(
-        width: 48.0, // Increased width
-        height: 48.0, // Increased height
-        margin: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: const Icon(
-          Icons.person_outline, // Outlined icon
-          color: Colors.orange,
-        ),
-      ),
-      Expanded(
-        child: SizedBox(
-          height: 30.0, // Set fixed height
-          child: TextFormField(
-            decoration: const InputDecoration(
-              labelText: 'Username',
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0), // Adjusted padding
-            ),
-            style: TextStyle(fontSize: 12.0), // Reduced font size
-          ),
-        ),
-      ),
-    ],
-  ),
-),
-const SizedBox(height: 16.0),
-// Password input
-Container(
-  decoration: BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.circular(16.0), // Increased border radius
-    boxShadow: [
-      BoxShadow(
-        color: Colors.grey.withOpacity(0.5),
-        spreadRadius: 2,
-        blurRadius: 5,
-        offset: const Offset(0, 3),
-      ),
-    ],
-  ),
-  child: Row(
-    children: [
-      Container(
-        width: 48.0, // Increased width
-        height: 48.0, // Increased height
-        margin: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: const Icon(
-          Icons.lock_outline, // Outlined icon
-          color: Colors.orange,
-        ),
-      ),
-      Expanded(
-        child: SizedBox(
-          height: 30.0, // Set fixed height
-          child: TextFormField(
-            obscureText: !_isPasswordVisible,
-            decoration: InputDecoration(
-              labelText: 'Password',
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0), // Adjusted padding
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _isPasswordVisible = !_isPasswordVisible;
-                  });
-                },
-              ),
-            ),
-            style: TextStyle(fontSize: 12.0), // Reduced font size
-          ),
-        ),
-      ),
-    ],
-  ),
-),
-
-
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromARGB(107, 156, 105, 43)
+                                .withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 48.0,
+                            height: 48.0,
+                            margin: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(107, 156, 105, 43)
+                                      .withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: const Icon(
+                              Icons.person_outline,
+                              color: Colors.orange,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 48.0,
+                              child: TextFormField(
+                                decoration: const InputDecoration(
+                                  labelText: 'Username',
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 8.0, horizontal: 12.0),
+                                ),
+                                style: const TextStyle(fontSize: 16.0),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    // Password input
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromARGB(107, 156, 105, 43)
+                                .withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 48.0,
+                            height: 48.0,
+                            margin: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(107, 156, 105, 43)
+                                      .withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: const Icon(
+                              Icons.lock_outline,
+                              color: Colors.orange,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 48.0,
+                              child: TextFormField(
+                                obscureText: !_isPasswordVisible,
+                                decoration: InputDecoration(
+                                  labelText: 'Password',
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 8.0, horizontal: 12.0),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _isPasswordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isPasswordVisible =
+                                            !_isPasswordVisible;
+                                      });
+                                    },
+                                  ),
+                                ),
+                                style: TextStyle(fontSize: 16.0),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     const SizedBox(height: 10.0),
                     Align(
                       alignment: Alignment.centerRight,
@@ -191,7 +197,7 @@ Container(
                         child: const Text(
                           'Forgot password?',
                           style: TextStyle(
-                            color: Colors.orange,
+                            color: Color.fromARGB(255, 255, 139, 93),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -199,16 +205,32 @@ Container(
                     ),
                     const SizedBox(height: 30.0),
                     // Sign In Button
-                    SizedBox(
-                      width: buttonWidth,
+                    Container(
+                      width: MediaQuery.of(context).size.width *
+                          0.5, // 50% of screen width
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(158, 255, 153, 0)
+                                .withOpacity(0.1), // Translucent orange shadow
+                            spreadRadius: 5,
+                            blurRadius: 20,
+                            offset: Offset(
+                                0, 10), // Moves the shadow 10 pixels down
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(
+                            30.0), // Fully rounded border radius
+                      ),
                       child: ElevatedButton(
                         onPressed: () {
                           // Handle Log In button tap
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange, // Button background color
+                          backgroundColor:Color.fromARGB(255, 255, 139, 93), // Button background color
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0), // Adjust border radius
+                            borderRadius: BorderRadius.circular(
+                                30.0), // Fully rounded border radius
                           ),
                         ),
                         child: const Padding(
@@ -223,6 +245,7 @@ Container(
                         ),
                       ),
                     ),
+
                     const SizedBox(height: 20.0),
                     // Horizontal line with "or"
                     const Row(
@@ -248,59 +271,114 @@ Container(
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(
-                          width: socialButtonSize,
-                          height: socialButtonSize,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Handle Google sign-up
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                side: const BorderSide(color: Colors.grey),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 10.0),
+                          child: SizedBox(
+                            width: socialButtonSize,
+                            height: socialButtonSize * 0.7,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.orange.withOpacity(
+                                        0.3), // Translucent orange shadow
+                                    spreadRadius: 2,
+                                    blurRadius: 5,
+                                    offset: Offset(
+                                        0, 3), // Moves the shadow 3 pixels down
+                                  ),
+                                ],
+                              ),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  // Handle Google sign-up
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                                child: Image.asset(
+                                    'assets/images/google.png'), // Change this to your Google logo asset path
                               ),
                             ),
-                            child: Image.asset('assets/images/google_logo.png'), // Change this to your Google logo asset path
                           ),
                         ),
-                        SizedBox(
-                          width: socialButtonSize,
-                          height: socialButtonSize,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Handle Facebook sign-up
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                side: const BorderSide(color: Colors.grey),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 10.0),
+                          child: SizedBox(
+                            width: socialButtonSize,
+                            height: socialButtonSize * 0.7,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.orange.withOpacity(
+                                        0.3), // Translucent orange shadow
+                                    spreadRadius: 2,
+                                    blurRadius: 5,
+                                    offset: Offset(
+                                        0, 3), // Moves the shadow 3 pixels down
+                                  ),
+                                ],
+                              ),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  // Handle Facebook sign-up
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                                child: Image.asset(
+                                    'assets/images/facebook.png'), // Change this to your Facebook logo asset path
                               ),
                             ),
-                            child: Image.asset('assets/images/facebook_logo.png'), // Change this to your Facebook logo asset path
                           ),
                         ),
-                        SizedBox(
-                          width: socialButtonSize,
-                          height: socialButtonSize,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Handle Apple sign-up
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                side: const BorderSide(color: Colors.grey),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 10.0),
+                          child: SizedBox(
+                            width: socialButtonSize,
+                            height: socialButtonSize * 0.7,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.orange.withOpacity(
+                                        0.3), // Translucent orange shadow
+                                    spreadRadius: 2,
+                                    blurRadius: 5,
+                                    offset: Offset(
+                                        0, 3), // Moves the shadow 3 pixels down
+                                  ),
+                                ],
+                              ),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  // Handle Apple sign-up
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                                child: Image.asset(
+                                    'assets/images/apple.png'), // Change this to your Apple logo asset path
                               ),
                             ),
-                            child: Image.asset('assets/images/apple_logo.png'), // Change this to your Apple logo asset path
                           ),
                         ),
                       ],
                     ),
+
                     const SizedBox(height: 20.0),
                     // Don't have an account? Sign Up
                     Row(
@@ -313,12 +391,16 @@ Container(
                         GestureDetector(
                           onTap: () {
                             // Handle Sign Up tap
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Auth02()),
+                            );
                           },
                           child: const Text(
                             'Sign up here',
                             style: TextStyle(
                               fontSize: 14.0,
-                              color: Colors.orange,
+                              color: Color.fromARGB(255, 255, 139, 93),
                               fontWeight: FontWeight.bold,
                             ),
                           ),
