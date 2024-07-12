@@ -70,126 +70,208 @@ class _Auth05State extends State<Auth05> with SingleTickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // Back button and "Back" text
-                Row(
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back_ios),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                    // Back button and "Back" text
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.arrow_back_ios),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        const Text(
+                          'Back',
+                          style: TextStyle(
+                            fontSize: 14.0,
+                          ),
+                        ),
+                      ],
                     ),
+                    const SizedBox(height: 20.0),
+                    // "Set Password" title
                     const Text(
-                      'Back',
+                      'Set Password',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10.0),
+                    // "Set your password" subtitle
+                    const Text(
+                      'Set your password',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14.0,
+                        color: Colors.grey,
                       ),
                     ),
+                    const SizedBox(height: 20.0),
+                    // Password input boxes
+                    _buildInputContainer(
+                      child: Row(
+                        children: [
+                          _buildIconContainer(icon: Icons.lock_outline),
+                          Expanded(
+                            child: Container(
+                              height: 48.0,
+                              child: TextFormField(
+                                controller: _passwordController,
+                                obscureText: !_passwordVisible,
+                                decoration: const InputDecoration(
+                                  labelText: 'Password',
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+                                ),
+                                style: const TextStyle(fontSize: 16.0),
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                              color: Colors.orange,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _passwordVisible = !_passwordVisible;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    _buildInputContainer(
+                      child: Row(
+                        children: [
+                          _buildIconContainer(icon: Icons.lock_outline),
+                          Expanded(
+                            child: Container(
+                              height: 48.0,
+                              child: TextFormField(
+                                controller: _confirmPasswordController,
+                                obscureText: !_confirmPasswordVisible,
+                                decoration: const InputDecoration(
+                                  labelText: 'Confirm Password',
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+                                ),
+                                style: const TextStyle(fontSize: 16.0),
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              _confirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                              color: Colors.orange,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _confirmPasswordVisible = !_confirmPasswordVisible;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20.0),
+                    // "At least 6 characters" text
+                    const Text(
+                      'At least 6 characters',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    const SizedBox(height: 100.0),
                   ],
                 ),
-                const SizedBox(height: 20.0),
-                // "Set Password" title
-                const Text(
-                  'Set Password',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+              ),
+            ),
+             
+          ],
+        ),
+
+        
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(bottom: 20.0),
+        child: Container(
+          width: buttonWidth,
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: ElevatedButton(
+            onPressed: _showLoadingDialog,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 255, 139, 93),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+            ),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(vertical: 12.0),
+              child: Text(
+                'Register',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
                 ),
-                const SizedBox(height: 10.0),
-                // "Set your password" subtitle
-                const Text(
-                  'Set your password',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                  ),
-                ),
-                const SizedBox(height: 20.0),
-                // Password input boxes
-                TextFormField(
-                  controller: _passwordController,
-                  obscureText: !_passwordVisible,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    border: const OutlineInputBorder(),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _passwordVisible ? Icons.visibility : Icons.visibility_off,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _passwordVisible = !_passwordVisible;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16.0),
-                TextFormField(
-                  controller: _confirmPasswordController,
-                  obscureText: !_confirmPasswordVisible,
-                  decoration: InputDecoration(
-                    labelText: 'Confirm Password',
-                    border: const OutlineInputBorder(),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _confirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _confirmPasswordVisible = !_confirmPasswordVisible;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 8.0),
-                // "At least 6 characters" text
-                const Text(
-                  'At least 6 characters',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    color: Colors.grey,
-                  ),
-                ),
-                const SizedBox(height: 20.0),
-                // Register Button
-                SizedBox(
-                  width: buttonWidth,
-                  child: ElevatedButton(
-                    onPressed: _showLoadingDialog,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 248, 120, 69),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 12.0),
-                      child: Text(
-                        'Register',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildInputContainer({required Widget child}) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30.0),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(107, 156, 105, 43).withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: child,
+    );
+  }
+
+  Widget _buildIconContainer({required IconData icon}) {
+    return Container(
+      width: 48.0,
+      height: 48.0,
+      margin: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(107, 156, 105, 43).withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Icon(
+        icon,
+        color: Colors.orange,
       ),
     );
   }
@@ -254,7 +336,7 @@ class CongratulationDialog extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 248, 120, 69),
+                backgroundColor: const Color.fromARGB(255, 255, 139, 93),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),

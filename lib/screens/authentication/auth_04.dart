@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'auth_05.dart'; // Import Auth01
+import 'auth_05.dart'; // Import Auth05
 
 class Auth04 extends StatefulWidget {
   const Auth04({super.key});
@@ -32,38 +32,41 @@ class _Auth04State extends State<Auth04> {
   }
 
   Widget _buildOtpBox(int index) {
-    return Container(
-      width: 40.0,
-      height: 40.0,
-      margin: const EdgeInsets.symmetric(horizontal: 5.0),
-      child: TextField(
-        controller: _otpControllers[index],
-        focusNode: _focusNodes[index],
-        keyboardType: TextInputType.number,
-        textAlign: TextAlign.center,
-        maxLength: 1,
-        decoration: InputDecoration(
-          border: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.orange),
+    return Expanded(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+        child: TextField(
+          controller: _otpControllers[index],
+          focusNode: _focusNodes[index],
+          keyboardType: TextInputType.number,
+          textAlign: TextAlign.center,
+          maxLength: 1,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: const BorderSide(color: Colors.orange),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: const BorderSide(color: Colors.grey),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: const BorderSide(color: Colors.orange),
+            ),
+            filled: _otpControllers[index].text.isNotEmpty,
+            fillColor: _otpControllers[index].text.isNotEmpty
+                ? Colors.orange.withOpacity(0.1)
+                : Colors.transparent,
+            counterText: '',
           ),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
-          ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.orange),
-          ),
-          filled: _otpControllers[index].text.isNotEmpty,
-          fillColor: _otpControllers[index].text.isNotEmpty
-              ? Colors.orange.withOpacity(0.1)
-              : Colors.transparent,
-          counterText: '',
+          onChanged: (value) {
+            setState(() {}); // Trigger rebuild to update the background color
+            if (value.isNotEmpty && index < 4) {
+              FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
+            }
+          },
         ),
-        onChanged: (value) {
-          setState(() {}); // Trigger rebuild to update the background color
-          if (value.isNotEmpty && index < 4) {
-            FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
-          }
-        },
       ),
     );
   }
@@ -88,7 +91,7 @@ class _Auth04State extends State<Auth04> {
         },
       );
 
-      // Close the success dialog after 2 seconds and navigate to auth_01.dart
+      // Close the success dialog after 2 seconds and navigate to auth_05.dart
       Future.delayed(const Duration(seconds: 2), () {
         Navigator.of(context).pop(); // Close the success dialog
         Navigator.push(
@@ -132,33 +135,33 @@ class _Auth04State extends State<Auth04> {
                 const SizedBox(height: 20.0),
                 // "Phone Verification" title
                 const Text(
-                  'Phone Verification',
-                  textAlign: TextAlign.center,
+                  'Verification Code',
+                  textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 10.0),
+                const SizedBox(height: 20.0),
                 // "Enter your OTP" subtitle
                 const Text(
-                  'Enter your OTP',
-                  textAlign: TextAlign.center,
+                  'We have sent the 5-digit verification code to your email address',
+                  textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Colors.grey,
                   ),
                 ),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 40.0),
                 // OTP input boxes
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: List.generate(5, (index) => _buildOtpBox(index)),
                 ),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 30.0),
                 // "Didn't receive code? Resend Code" text
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const Text(
                       "Didn't receive code? ",
@@ -174,7 +177,7 @@ class _Auth04State extends State<Auth04> {
                         'Resend Code',
                         style: TextStyle(
                           fontSize: 14.0,
-                          color: Colors.orange,
+                          color: Color.fromARGB(255, 255, 139, 93),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -195,7 +198,7 @@ class _Auth04State extends State<Auth04> {
           child: ElevatedButton(
             onPressed: _showLoadingDialog,
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 248, 120, 69),
+              backgroundColor: const Color.fromARGB(255, 255, 139, 93),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
