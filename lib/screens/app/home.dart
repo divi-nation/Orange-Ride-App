@@ -7,7 +7,7 @@ import 'ride.dart';
 import 'trips.dart';
 import 'notification.dart';
 import 'profile.dart';
-import '../driver/new_driver.dart';
+import 'driver/new_driver.dart';
 import 'support.dart';
 
 class HomePage extends StatefulWidget {

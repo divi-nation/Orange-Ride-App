@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'trips.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: SupportPage(),
       routes: {
-        '/history': (context) => const HistoryPage(), // Define your history/mytrips page here
+        '/trips': (context) => TripsPage(), // Define your history/mytrips page here
       },
     );
   }
@@ -111,7 +112,7 @@ class SupportPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/history');
+                Navigator.pushNamed(context, '/trips');
               },
               child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.0),
